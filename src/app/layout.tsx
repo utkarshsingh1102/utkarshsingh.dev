@@ -33,9 +33,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Utkarsh Singh — Data Engineer & Platform Builder",
+  title: "Utkarsh Singh — Full-Stack & Cloud Developer",
   description:
-    "Data engineer building enterprise lineage platforms, Spark pipelines and the web front-ends that make them usable.",
+    "Full-stack and cloud developer in Pune, India. I build applications end to end — interface, services and the cloud they run on. AWS and Azure certified, 3.5+ years, currently building enterprise software at IBM.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { EASE } from "@/components/motion/Reveal";
-import { topNav } from "@/data/site";
+import { profile, topNav } from "@/data/site";
 import { LocalTime } from "./LocalTime";
 
 export function TopBar() {
@@ -19,7 +19,7 @@ export function TopBar() {
     >
       <div className="flex h-full w-full items-stretch">
         <div className="hidden h-full w-rail-left shrink-0 items-center border-r border-line px-[30px] xl:flex">
-          <p className="t-meta text-ink-muted">Welcome to my world!</p>
+          <p className="t-meta text-ink-muted">Open to freelance &amp; full-time</p>
         </div>
 
         <nav className="flex h-full min-w-0 flex-1 items-stretch overflow-hidden">
@@ -65,10 +65,10 @@ export function TopBar() {
                   className="animate-status-ping absolute size-[10px] rounded-full bg-status"
                 />
               </span>
-              <span className="t-meta text-status">Open to new work</span>
+              <span className="t-meta text-status">Open for projects</span>
             </span>
 
-            <span className="t-meta text-ink-muted">Pune, India</span>
+            <span className="t-meta text-ink-muted">{profile.details[1].label}</span>
             <span aria-hidden className="size-[5px] rounded-full bg-ink-muted" />
             <span className="flex min-w-[121px] items-center justify-end gap-[6px] t-meta text-ink-muted">
               <span>My time:</span>

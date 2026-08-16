@@ -127,7 +127,7 @@ export function Work() {
 
         <Reveal className="flex flex-col items-end gap-[20px] pt-[30px]">
           <p className="max-w-[280px] text-right text-[12px] leading-[14.4px] text-ink-faint">
-            Explore the full collection of my design and development work.
+            A sample of recent builds. Case studies — the problem, the constraints, what changed — are being written up.
           </p>
           <ButtonLink href="/work">View all works</ButtonLink>
         </Reveal>

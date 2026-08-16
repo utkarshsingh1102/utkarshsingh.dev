@@ -11,7 +11,7 @@ export function Blog() {
         <Reveal className="flex flex-col gap-[10px]">
           <PreTitle>Insights &amp; Ideas</PreTitle>
           <h2 className="t-h2 text-[clamp(30px,4.2vw,46px)] leading-[1.2] text-ink">
-            From My <span className="text-ink-muted">Design Desk</span>
+            From My <span className="text-ink-muted">Engineering Desk</span>
           </h2>
         </Reveal>
 
@@ -31,7 +31,7 @@ export function Blog() {
                   <h3 className="t-h3 text-ink">{post.title}</h3>
                 </div>
                 <p className="t-label text-accent transition-transform duration-300 group-hover:translate-x-[4px]">
-                  Read full blog
+                  Read the post
                 </p>
               </Link>
             </StaggerItem>
@@ -40,7 +40,7 @@ export function Blog() {
           <StaggerItem>
             <div className="flex h-full min-h-[317.2px] items-center justify-center border-b border-r border-line bg-page p-[30px]">
               <ButtonLink href="/blog" variant="secondary">
-                View all blog
+                All posts
               </ButtonLink>
             </div>
           </StaggerItem>

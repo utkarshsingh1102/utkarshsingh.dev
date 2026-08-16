@@ -65,7 +65,7 @@ export function Contact() {
                 id="firstName"
                 name="firstName"
                 required
-                placeholder="Mazakine"
+                placeholder="Jane"
                 className={fieldClass}
               />
             </StaggerItem>
@@ -78,7 +78,7 @@ export function Contact() {
                 id="lastName"
                 name="lastName"
                 required
-                placeholder="Reed"
+                placeholder="Cooper"
                 className={fieldClass}
               />
             </StaggerItem>
@@ -105,7 +105,7 @@ export function Contact() {
                 id="subject"
                 name="subject"
                 required
-                placeholder="Tell us the purpose"
+                placeholder="What do you need built?"
                 className={fieldClass}
               />
             </StaggerItem>
@@ -115,7 +115,7 @@ export function Contact() {
               <textarea
                 id="message"
                 name="message"
-                placeholder="Write your message here"
+                placeholder="A few lines about the project, timeline and budget"
                 className="min-h-[140px] w-full resize-y border border-line bg-transparent p-[20px] text-[16px] leading-[19.2px] text-ink outline-none transition-colors duration-200 focus:border-ink-muted"
               />
             </StaggerItem>
@@ -129,7 +129,7 @@ export function Contact() {
               Send message
             </button>
             <p aria-live="polite" className="t-label text-accent">
-              {sent ? "Thanks — I’ll be in touch shortly." : ""}
+              {sent ? "Thanks — I’ll reply within a day." : ""}
             </p>
           </Reveal>
         </form>

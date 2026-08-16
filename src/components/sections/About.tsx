@@ -16,7 +16,7 @@ export function About() {
             <StaggerItem className="flex flex-col gap-[10px]">
               <PreTitle>About me section</PreTitle>
               <h2 className="t-h2 text-[clamp(30px,4.2vw,46px)] leading-[1.2] text-ink">
-                Inside My <span className="text-ink-muted">Engineering Core</span>
+                How I <span className="text-ink-muted">Solve Problems</span>
               </h2>
             </StaggerItem>
 
@@ -24,19 +24,25 @@ export function About() {
               <p>
                 I’m a{" "}
                 <span className={highlight}>
-                  Data Engineer and Full Stack Developer
-                </span>{" "}
-                working on enterprise data platforms — right now leading R&amp;D
-                on a data-lineage platform for a UK banking estate at IBM,
-                building multi-source parsers that feed a unified Neo4j
-                knowledge graph.
+                  full-stack and cloud developer
+                </span>
+                . I build applications end to end — the interface, the services
+                behind it, the database, and the cloud it runs on. Most of my
+                work starts the same way: something is slow, brittle or breaks
+                under load, and it has to be right before the business can move.
               </p>
               <p>
-                Before that I built a gaming market-intelligence pipeline on{" "}
-                <span className={highlight}>Medallion architecture</span> at
-                NextBigGames, from ingestion through to the report generator
-                stakeholders actually read. I like problems that run from raw
-                data all the way to the interface.
+                At IBM I build platform software used across an enterprise
+                banking organisation, where a wrong answer is expensive and easy
+                to miss. Before that I built and ran the cloud workloads behind
+                a games company’s market product{" "}
+                <span className={highlight}>end to end</span>, and before that I
+                shipped sites and portals for my own clients.
+              </p>
+              <p>
+                The method doesn’t change between a React front end and a job
+                running on a cluster: understand the system, make it observable,
+                make it hard to break.
               </p>
             </StaggerItem>
 

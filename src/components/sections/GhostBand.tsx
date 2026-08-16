@@ -69,7 +69,10 @@ export function GhostBand({
     `clamp(40px, ${(96 / Math.max(text.length, 3)).toFixed(1)}cqw, 620px)`;
 
   // The band sits between two sections, so it carries its own top gap and
-  // claws back part of the next section's 160px top padding.
+  // claws back part of the next section's 160px top padding. It bleeds to the
+  // column edges, but only as far left as the line-number gutter — the gutter
+  // is positioned and opaque, so anything tucked under it gets painted over and
+  // the first letters read as trimmed.
   return (
     <motion.div
       aria-hidden
@@ -77,7 +80,7 @@ export function GhostBand({
       initial="hidden"
       whileInView="shown"
       viewport={viewport}
-      className="@container -mx-[20px] -mb-[70px] select-none pt-[70px] text-ghost sm:-mx-[30px] xl:-mx-[48px] xl:-mb-[95px] xl:pt-[80px] 3xl:-mx-[72px]"
+      className="@container -mx-[20px] -mb-[70px] select-none pt-[70px] text-ghost sm:-mx-[30px] xl:-mb-[95px] xl:-ml-[30px] xl:-mr-[48px] xl:pt-[80px] 3xl:-ml-[48px] 3xl:-mr-[72px]"
     >
       <div className={`${row} justify-start`} style={{ fontSize: fill(lead) }}>
         <motion.span variants={halfVariants(leadFrom)} className={word}>
