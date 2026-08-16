@@ -32,9 +32,9 @@ function getSnapshot(): Theme {
   return document.documentElement.classList.contains("dark") ? "dark" : "light";
 }
 
-/** Server and first client render agree on light, the default for everyone. */
+/** Server and first client render agree on dark, the default for everyone. */
 function getServerSnapshot(): Theme {
-  return "light";
+  return "dark";
 }
 
 type ThemeValue = {
@@ -51,7 +51,7 @@ export function useTheme() {
 }
 
 /**
- * Light is the default for every first-time visitor — the OS
+ * Dark is the default for every first-time visitor — the OS
  * `prefers-color-scheme` is deliberately never consulted. Only an explicit
  * toggle switches themes, and that choice is remembered for return visits.
  */
@@ -73,7 +73,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       stored = null;
     }
 
-    document.documentElement.classList.toggle("dark", stored === "dark");
+    document.documentElement.classList.toggle("dark", stored !== "light");
     listeners.forEach((listener) => listener());
   }, []);
 

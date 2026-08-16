@@ -7,11 +7,12 @@ import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import "./globals.css";
 
 /**
- * Runs before first paint. Light is the default for everyone, so this only has
- * to opt a returning visitor back into dark — no flash either way, and the OS
- * colour-scheme preference is intentionally ignored.
+ * Runs before first paint. Dark is the default for everyone, so `<html>` ships
+ * with the class already on it and this only has to strip it for a visitor who
+ * has chosen light — no flash either way, and the OS colour-scheme preference
+ * is intentionally ignored.
  */
-const themeBootScript = `try{if(localStorage.theme==="dark")document.documentElement.classList.add("dark")}catch(e){}`;
+const themeBootScript = `try{if(localStorage.theme==="light")document.documentElement.classList.remove("dark")}catch(e){}`;
 
 const geist = Geist({
   variable: "--font-geist",
@@ -28,7 +29,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 /* Matches the server-rendered default. The runtime switch is the CSS
    `color-scheme` on :root / :root.dark, which overrides this meta. */
 export const viewport: Viewport = {
-  colorScheme: "light",
+  colorScheme: "dark",
 };
 
 export const metadata: Metadata = {
@@ -41,7 +42,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geist.variable} ${ibmPlexMono.variable} h-full`}
+      className={`dark ${geist.variable} ${ibmPlexMono.variable} h-full`}
       suppressHydrationWarning
     >
       <head>
