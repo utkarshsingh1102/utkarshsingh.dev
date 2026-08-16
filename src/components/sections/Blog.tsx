@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { PreTitle } from "@/components/ui/PreTitle";
@@ -9,7 +10,7 @@ export function Blog() {
       <div className="flex flex-col gap-[40px]">
         <Reveal className="flex flex-col gap-[10px]">
           <PreTitle>Insights &amp; Ideas</PreTitle>
-          <h2 className="t-h2 text-[clamp(34px,5vw,52px)] leading-[1.2] text-white">
+          <h2 className="t-h2 text-[clamp(30px,4.2vw,46px)] leading-[1.2] text-ink">
             From My <span className="text-ink-muted">Design Desk</span>
           </h2>
         </Reveal>
@@ -21,18 +22,18 @@ export function Blog() {
         >
           {posts.map((post) => (
             <StaggerItem key={post.href}>
-              <a
+              <Link
                 href={post.href}
                 className="group flex h-full min-h-[317.2px] flex-col justify-between border-b border-r border-line bg-page p-[30px] transition-colors duration-300 hover:bg-panel"
               >
                 <div className="flex flex-col gap-[20px] pb-[150px]">
                   <p className="t-label text-ink-muted">{post.date}</p>
-                  <h3 className="t-h3 text-white">{post.title}</h3>
+                  <h3 className="t-h3 text-ink">{post.title}</h3>
                 </div>
                 <p className="t-label text-accent transition-transform duration-300 group-hover:translate-x-[4px]">
                   Read full blog
                 </p>
-              </a>
+              </Link>
             </StaggerItem>
           ))}
 

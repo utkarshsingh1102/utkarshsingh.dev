@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { DownloadButton } from "@/components/ui/Button";
-import { profile } from "@/data/site";
+import { Icon } from "@/components/ui/Icon";
+import { profile, socials } from "@/data/site";
 
 /**
  * The left rail: brand, bio, contact facts, CV download and the two CTAs.
@@ -8,29 +9,29 @@ import { profile } from "@/data/site";
  */
 export function ProfileCard() {
   return (
-    <div className="flex h-full flex-col justify-between gap-[40px] overflow-y-auto pb-[30px] [scrollbar-width:none] xl:gap-[95.2px] [&::-webkit-scrollbar]:hidden">
+    <div className="flex h-full flex-col justify-between gap-[16px] overflow-y-auto pb-[16px] [scrollbar-width:none] xl:gap-[24px] [&::-webkit-scrollbar]:hidden">
       <div className="flex flex-col">
-        <div className="flex items-center p-[30px]">
-          <a href="#top" className="group flex h-[50px] items-center gap-[10px]">
-            <span className="relative flex size-[50px] shrink-0 items-center justify-center overflow-hidden border border-line">
+        <div className="flex items-center px-[26px] pb-[14px] pt-[18px]">
+          <a href="#top" className="group flex h-[44px] items-center gap-[10px]">
+            <span className="relative flex size-[44px] shrink-0 items-center justify-center overflow-hidden border border-line">
               <Image
                 src={profile.avatar}
                 alt={profile.name}
-                width={50}
-                height={50}
+                width={44}
+                height={44}
                 className="size-full object-cover transition-opacity duration-300 group-hover:opacity-0"
               />
               <Image
                 src={profile.avatarHover}
                 alt=""
-                width={50}
-                height={50}
+                width={44}
+                height={44}
                 aria-hidden
                 className="absolute inset-0 size-full -scale-x-100 object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
               />
             </span>
             <span className="flex flex-col">
-              <span className="font-mono text-[18px] leading-[25.2px] text-white">
+              <span className="font-mono text-[16px] leading-[22px] text-ink">
                 {profile.name}
               </span>
               <span className="t-label text-ink-muted">{profile.role}</span>
@@ -38,21 +39,18 @@ export function ProfileCard() {
           </a>
         </div>
 
-        <div className="flex flex-col gap-[30px] px-[30px] pb-[30px]">
+        <div className="flex flex-col gap-[18px] px-[26px] pb-[18px]">
           <p className="t-body text-ink-muted">{profile.bio}</p>
 
-          <ul className="flex flex-col gap-[20px]">
+          <ul className="flex flex-col gap-[12px]">
             {profile.details.map((detail) => {
               const content = (
                 <>
-                  <Image
+                  <Icon
                     src={detail.icon}
-                    alt=""
-                    width={16}
-                    height={16}
-                    className="size-[16px] shrink-0 object-contain"
+                    className="text-ink-muted transition-colors duration-200 group-hover:text-ink"
                   />
-                  <span className="t-label text-ink-muted transition-colors duration-200 group-hover:text-white">
+                  <span className="t-label text-ink-muted transition-colors duration-200 group-hover:text-ink">
                     {detail.label}
                   </span>
                 </>
@@ -79,6 +77,23 @@ export function ProfileCard() {
             })}
           </ul>
 
+          {/* Profiles sit with the contact facts rather than in the footer */}
+          <ul className="flex items-center gap-[10px]">
+            {socials.map((social) => (
+              <li key={social.name}>
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={social.name}
+                  className="flex size-[34px] items-center justify-center border border-line text-ink-muted transition-colors duration-200 hover:border-ink-muted hover:bg-line hover:text-ink"
+                >
+                  <Icon src={social.icon} />
+                </a>
+              </li>
+            ))}
+          </ul>
+
           <DownloadButton
             label="Download CV"
             href={profile.cvUrl}
@@ -89,18 +104,18 @@ export function ProfileCard() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-[20px] border-t border-line p-[30px]">
+      <div className="flex flex-col gap-[10px] border-t border-line px-[26px] py-[18px]">
         <a
           href={profile.scheduleUrl}
           target="_blank"
           rel="noreferrer"
-          className="flex items-center justify-center border border-white bg-white px-[20px] py-[10px] t-button text-panel transition-colors duration-200 hover:bg-transparent hover:text-white"
+          className="flex items-center justify-center border border-ink bg-ink px-[20px] py-[10px] t-button text-ink-inverse transition-colors duration-200 hover:bg-transparent hover:text-ink"
         >
           Schedule a call
         </a>
         <a
           href="#contact-me"
-          className="flex items-center justify-center border border-white px-[20px] py-[10px] t-button text-white transition-colors duration-200 hover:bg-white hover:text-panel"
+          className="flex items-center justify-center border border-ink px-[20px] py-[10px] t-button text-ink transition-colors duration-200 hover:bg-ink hover:text-ink-inverse"
         >
           Work with me
         </a>

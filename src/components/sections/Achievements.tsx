@@ -45,11 +45,11 @@ function JobEntry({ job }: { job: Job }) {
         >
           <span className="flex shrink-0 flex-col gap-[6px] lg:w-[260px] 3xl:w-[320px]">
             <span className="block t-label text-accent">{job.period}</span>
-            <span className="block t-h3 text-white">{job.company}</span>
+            <span className="block t-h3 text-ink">{job.company}</span>
           </span>
 
           <span className="flex min-w-0 flex-1 flex-wrap items-center gap-x-[16px] gap-y-[6px]">
-            <span className="t-body text-white">{job.role}</span>
+            <span className="t-body text-ink">{job.role}</span>
             <span className="t-label text-ink-muted">{job.team}</span>
             <motion.span
               aria-hidden
@@ -58,7 +58,7 @@ function JobEntry({ job }: { job: Job }) {
             />
             <span
               aria-hidden
-              className={`flex size-[34px] shrink-0 items-center justify-center border border-line text-ink-muted transition-all duration-300 group-hover:border-ink-muted group-hover:text-white ${
+              className={`flex size-[34px] shrink-0 items-center justify-center border border-line text-ink-muted transition-all duration-300 group-hover:border-ink-muted group-hover:text-ink ${
                 open ? "rotate-45" : ""
               }`}
             >
@@ -149,7 +149,7 @@ export function Achievements() {
                 key={item.code}
                 className="flex flex-col gap-[8px] border-b border-r border-dotted border-line p-[24px] transition-colors duration-300 hover:bg-panel"
               >
-                <p className="t-body text-white">{item.name}</p>
+                <p className="t-body text-ink">{item.name}</p>
                 <p className="t-meta text-accent">{item.code}</p>
               </StaggerItem>
             ))}

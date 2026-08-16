@@ -31,16 +31,20 @@ export function TopBar() {
                 <li key={item.label} className="relative flex">
                   <Link
                     href={item.href}
-                    className={`flex min-w-[120px] items-center justify-center px-[24px] t-meta transition-colors duration-200 hover:text-white ${
-                      active ? "text-white" : "text-ink-muted"
+                    className={`flex min-w-[120px] items-center justify-center px-[24px] t-meta transition-colors duration-200 hover:text-ink ${
+                      active ? "text-ink" : "text-ink-muted"
                     }`}
                   >
                     {item.label}
                   </Link>
                   {active ? (
-                    <span
+                    // Shared layoutId: the rule slides across to the new tab
+                    // instead of blinking out and back in.
+                    <motion.span
+                      layoutId="nav-underline"
                       aria-hidden
                       className="absolute inset-x-0 bottom-0 h-px bg-accent"
+                      transition={{ duration: 0.45, ease: EASE }}
                     />
                   ) : null}
                 </li>

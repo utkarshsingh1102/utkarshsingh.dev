@@ -2,9 +2,11 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { EASE, Reveal, Stagger } from "@/components/motion/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
+import { Icon } from "@/components/ui/Icon";
 import { PreTitle } from "@/components/ui/PreTitle";
 import { works } from "@/data/site";
 
@@ -16,6 +18,8 @@ const layoutClass: Record<Layout, string> = {
   two: "sm:grid-cols-2 3xl:grid-cols-3",
   three: "sm:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4",
 };
+
+const MotionLink = motion.create(Link);
 
 const card = {
   hidden: { opacity: 0, y: 40 },
@@ -44,16 +48,18 @@ export function Work() {
                   }
                   className={`flex size-[34px] items-center justify-center transition-colors duration-200 ${
                     index === 0 ? "border-r border-line" : ""
-                  } ${layout === option ? "bg-panel" : "bg-page"}`}
+                  } ${
+                    layout === option
+                      ? "bg-line text-ink"
+                      : "bg-transparent text-ink-faint"
+                  }`}
                 >
-                  <Image
-                    src={option === "two" ? "/icons/grid-two.svg" : "/icons/grid-three.svg"}
-                    alt=""
-                    width={16}
-                    height={16}
-                    className={`size-[16px] object-contain transition-opacity duration-200 ${
-                      layout === option ? "opacity-100" : "opacity-50"
-                    }`}
+                  <Icon
+                    src={
+                      option === "two"
+                        ? "/icons/grid-two.svg"
+                        : "/icons/grid-three.svg"
+                    }
                   />
                 </button>
               ))}
@@ -66,7 +72,7 @@ export function Work() {
             className={`grid grid-cols-1 gap-[30px] ${layoutClass[layout]}`}
           >
             {works.map((work, index) => (
-              <motion.a
+              <MotionLink
                 key={work.title}
                 href={work.href}
                 layout
@@ -76,17 +82,16 @@ export function Work() {
                 className="group flex flex-col overflow-hidden border border-line"
               >
                 <div className="relative flex items-center bg-panel py-[16px] pl-[18px] pr-[70px]">
-                  <p className="t-body text-white">{work.title}</p>
+                  <p className="t-body text-ink">{work.title}</p>
                   <span
                     aria-hidden
-                    className="absolute inset-y-0 right-0 flex w-[54px] items-center justify-center border-l border-line bg-panel"
+                    className="absolute inset-y-0 right-0 flex w-[54px] items-center justify-center border-l border-line bg-panel text-accent"
                   >
-                    <Image
+                    <Icon
                       src="/icons/arrow-right.svg"
-                      alt=""
                       width={22}
-                      height={19}
-                      className="h-[19.13px] w-[22px] transition-transform duration-300 group-hover:translate-x-[3px]"
+                      height={19.13}
+                      className="transition-transform duration-300 group-hover:translate-x-[4px] group-hover:-translate-y-[4px]"
                     />
                   </span>
                   <span
@@ -95,14 +100,16 @@ export function Work() {
                   />
                 </div>
 
-                <div className="relative aspect-[434.5/338.94] w-full overflow-hidden bg-white">
+                {/* Photography sits in its own dark well in both themes — it
+                    also stops the plate flashing through the hover crossfade */}
+                <div className="relative aspect-[434.5/338.94] w-full overflow-hidden bg-well">
                   <Image
                     src={work.image}
                     alt={work.title}
                     fill
                     sizes="(min-width: 1280px) 435px, (min-width: 640px) 45vw, 90vw"
                     priority={index === 0}
-                    className="object-cover transition-[opacity,transform] duration-700 ease-out group-hover:scale-105 group-hover:opacity-0"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                   <Image
                     src={work.hoverImage}
@@ -113,7 +120,7 @@ export function Work() {
                     className="scale-105 object-cover opacity-0 transition-[opacity,transform] duration-700 ease-out group-hover:scale-100 group-hover:opacity-100"
                   />
                 </div>
-              </motion.a>
+              </MotionLink>
             ))}
           </Stagger>
         </div>

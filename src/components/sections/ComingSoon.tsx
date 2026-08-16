@@ -31,7 +31,7 @@ export function ComingSoon({
       <div className="flex max-w-[760px] flex-col gap-[24px] 3xl:max-w-[1000px]">
         <PreTitle>{eyebrow}</PreTitle>
 
-        <h1 className="t-display text-[clamp(48px,7vw,92px)] leading-[1.1] text-white">
+        <h1 className="t-display text-[clamp(42px,6vw,82px)] leading-[1.1] text-ink">
           {titleLead} <span className="text-ink-muted">{titleTrail}</span>
         </h1>
 
@@ -40,13 +40,13 @@ export function ComingSoon({
         <div className="flex flex-wrap items-center gap-[16px] pt-[10px]">
           <Link
             href="/"
-            className="inline-flex items-center justify-center border border-white bg-white px-[20px] py-[10px] t-button text-panel transition-colors duration-200 hover:bg-transparent hover:text-white"
+            className="inline-flex items-center justify-center border border-ink bg-ink px-[20px] py-[10px] t-button text-ink-inverse transition-colors duration-200 hover:bg-transparent hover:text-ink"
           >
             Back to home
           </Link>
           <Link
             href="/#contact-me"
-            className="inline-flex items-center justify-center border border-ink-muted px-[20px] py-[10px] t-button text-ink-muted transition-colors duration-200 hover:border-white hover:text-white"
+            className="inline-flex items-center justify-center border border-ink-muted px-[20px] py-[10px] t-button text-ink-muted transition-colors duration-200 hover:border-ink hover:text-ink"
           >
             Get in touch
           </Link>

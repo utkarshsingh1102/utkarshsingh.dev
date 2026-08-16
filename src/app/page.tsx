@@ -1,4 +1,3 @@
-import { AppShell } from "@/components/layout/AppShell";
 import { About } from "@/components/sections/About";
 import { Achievements } from "@/components/sections/Achievements";
 import { Blog } from "@/components/sections/Blog";
@@ -12,7 +11,7 @@ import { Work } from "@/components/sections/Work";
 
 export default function Home() {
   return (
-    <AppShell>
+    <>
       <Hero />
       <Work />
       <GhostBand lead="Since" trail="2023" />
@@ -24,6 +23,6 @@ export default function Home() {
       <Testimonials />
       <Blog />
       <Contact />
-    </AppShell>
+    </>
   );
 }

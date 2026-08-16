@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { DownloadButton } from "@/components/ui/Button";
+import { Icon } from "@/components/ui/Icon";
 import { PreTitle } from "@/components/ui/PreTitle";
 import { experience, profile, socials } from "@/data/site";
 import { AboutGallery } from "./AboutGallery";
@@ -15,7 +15,7 @@ export function About() {
           <Stagger className="flex max-w-[900px] flex-col gap-[20px] 3xl:max-w-none">
             <StaggerItem className="flex flex-col gap-[10px]">
               <PreTitle>About me section</PreTitle>
-              <h2 className="t-h2 text-[clamp(34px,5vw,52px)] leading-[1.2] text-white">
+              <h2 className="t-h2 text-[clamp(30px,4.2vw,46px)] leading-[1.2] text-ink">
                 Inside My <span className="text-ink-muted">Engineering Core</span>
               </h2>
             </StaggerItem>
@@ -52,18 +52,19 @@ export function About() {
 
           <div className="flex flex-col gap-[30px] pt-[160px]">
             <Reveal>
-              <PreTitle>In a previous life</PreTitle>
+              <PreTitle>As a creative person</PreTitle>
             </Reveal>
 
+            {/* Company names live in the experience section now — this reads as
+                a creative timeline, with the third column left open. */}
             <Stagger stagger={0.1} className="flex flex-col gap-[20px]">
               {experience.map((item) => (
                 <StaggerItem
                   key={item.period}
-                  className="grid gap-x-[20px] gap-y-[2px] border-b border-line pb-[20px] t-label sm:grid-cols-[170.85px_237.3px_1fr]"
+                  className="grid gap-x-[20px] gap-y-[2px] border-b border-line pb-[20px] t-label sm:grid-cols-[150px_1fr]"
                 >
                   <span className="text-accent">{item.period}</span>
-                  <span className="text-white">{item.role}</span>
-                  <span className="text-ink-muted">{item.company}</span>
+                  <span className="text-ink">{item.role}</span>
                 </StaggerItem>
               ))}
             </Stagger>
@@ -86,15 +87,9 @@ export function About() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label={social.name}
-                    className="flex size-[26px] items-center justify-center opacity-80 transition-opacity duration-200 hover:scale-110 hover:opacity-100"
+                    className="flex size-[26px] items-center justify-center text-ink-muted transition-[color,transform] duration-200 hover:scale-110 hover:text-ink"
                   >
-                    <Image
-                      src={social.icon}
-                      alt=""
-                      width={18}
-                      height={18}
-                      className="size-[18px] object-contain"
-                    />
+                    <Icon src={social.icon} size={18} />
                   </a>
                 </li>
               ))}

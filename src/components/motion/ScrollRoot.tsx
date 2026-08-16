@@ -65,11 +65,33 @@ export function ScrollRoot({
       lerp: 0.085,
       wheelMultiplier: 1,
       autoRaf: true,
-      anchors: { offset: -20 },
       respectReducedMotion: true,
     });
 
-    return () => lenis.destroy();
+    // Lenis' own `anchors` option only covers window scrolling, so in-page
+    // links would hard-jump inside the centre column. Route them through
+    // lenis.scrollTo instead so they ease across like every other scroll.
+    const onClick = (event: MouseEvent) => {
+      if (event.defaultPrevented || event.button !== 0) return;
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+      const link = (event.target as HTMLElement | null)?.closest?.("a");
+      const href = link?.getAttribute("href");
+      if (!href || !href.startsWith("#") || href === "#") return;
+
+      const target = document.querySelector(href);
+      if (!target) return;
+
+      event.preventDefault();
+      lenis.scrollTo(target as HTMLElement, { offset: -20, duration: 1.2 });
+      window.history.replaceState(null, "", href);
+    };
+
+    document.addEventListener("click", onClick);
+    return () => {
+      document.removeEventListener("click", onClick);
+      lenis.destroy();
+    };
   }, [isScroller]);
 
   return (

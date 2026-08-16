@@ -20,7 +20,7 @@ export function Hero() {
   // sizing the type off the longer half's character count instead of letting
   // it wrap. 0.52em is the display face's average advance width.
   const longest = Math.max(hero.titleLead.length, hero.titleTrail.length);
-  const titleSize = `clamp(28px, ${(100 / (0.52 * longest)).toFixed(1)}cqw, 92px)`;
+  const titleSize = `clamp(26px, ${(94 / (0.52 * longest)).toFixed(1)}cqw, 82px)`;
 
   return (
     <section id="top" className="@container pt-[60px]">
@@ -36,7 +36,7 @@ export function Hero() {
 
         {/* Each line clips its own mask so the headline wipes up into place */}
         <h1
-          className="t-display leading-[1.1] text-white"
+          className="t-display leading-[1.1] text-ink"
           style={{ fontSize: titleSize }}
         >
           <span className="block overflow-hidden pb-[0.06em]">

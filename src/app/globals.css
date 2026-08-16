@@ -1,26 +1,39 @@
 @import "tailwindcss";
 
+/* Theme is class-driven, not media-driven: everyone gets light on a first
+   visit and only an explicit toggle (stored in localStorage) adds `.dark`. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
-  /* Surfaces */
-  --color-page: #1f1f1f;
-  --color-panel: #181818;
-  --color-line: #2b2b2b;
+  /* Surfaces — light is the default theme. The centre column is pure white and
+     the rails/bars sit a shade back in neutral grey. */
+  --color-page: #ffffff;
+  --color-panel: #f3f4f4;
+  --color-line: #e0e2e2;
+  /* One step heavier than a hairline: filled icon slots, pressed states */
+  --color-line-strong: #d0d3d3;
+  /* Deliberately dark in both themes — the plate behind photography */
+  --color-well: #14161a;
 
   /* Text */
-  --color-ink: #ffffff;
-  --color-ink-bright: #eeeeee;
-  --color-ink-muted: #b1b1b1;
-  --color-ink-soft: #9d9d9d;
-  --color-ink-faint: #8f8f8f;
+  --color-ink: #12151a;
+  --color-ink-bright: #000000;
+  --color-ink-muted: #474e55;
+  --color-ink-soft: #565d65;
+  --color-ink-faint: #63696f;
+  /* Label sitting on a solid ink fill */
+  --color-ink-inverse: #f7f8fa;
 
-  /* Oversized watermark type/rules in the section dividers */
-  --color-ghost: rgba(255, 255, 255, 0.055);
+  /* Oversized watermark type/rules in the section dividers.
+     0.07 here reads at the same weight as 0.055 white does on the dark page. */
+  --color-ghost: rgba(18, 21, 26, 0.07);
 
-  /* Accents */
-  --color-accent: #f7f4be;
-  --color-accent-soft: rgba(247, 244, 190, 0.2);
-  --color-status: #5aee6c;
-  --color-status-soft: rgba(90, 238, 108, 0.1);
+  /* Accents. The alphas are tuned so accent-on-soft and status-on-soft still
+     clear AA at the 12px sizes they label. */
+  --color-accent: #6b6420;
+  --color-accent-soft: rgba(107, 100, 32, 0.12);
+  --color-status: #12702e;
+  --color-status-soft: rgba(18, 112, 46, 0.12);
 
   /* Type */
   --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
@@ -40,6 +53,37 @@
   /* Reading width of the centre column; leftover space stays page colour. */
   --container-content: 1100px;
   --spacing-topbar: 28.6px;
+}
+
+/* Dark theme — the original palette, verbatim. These sit outside any @layer,
+   so they beat the @theme declarations Tailwind emits into `@layer theme`
+   regardless of source order. */
+:root {
+  color-scheme: light;
+}
+
+:root.dark {
+  color-scheme: dark;
+
+  --color-page: #1f1f1f;
+  --color-panel: #181818;
+  --color-line: #2b2b2b;
+  --color-line-strong: #3a3a3a;
+  --color-well: #14161a;
+
+  --color-ink: #ffffff;
+  --color-ink-bright: #eeeeee;
+  --color-ink-muted: #b1b1b1;
+  --color-ink-soft: #9d9d9d;
+  --color-ink-faint: #8f8f8f;
+  --color-ink-inverse: #181818;
+
+  --color-ghost: rgba(255, 255, 255, 0.055);
+
+  --color-accent: #f7f4be;
+  --color-accent-soft: rgba(247, 244, 190, 0.2);
+  --color-status: #5aee6c;
+  --color-status-soft: rgba(90, 238, 108, 0.1);
 }
 
 @layer base {
@@ -73,48 +117,49 @@
 }
 
 @layer components {
-  /* Type ramp lifted straight off the Figma text styles */
+  /* Type ramp from the Figma text styles, dialled back roughly 10% and given
+     looser leading so the columns breathe. */
   .t-display {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 92px;
-    line-height: 101.2px;
+    font-size: 82px;
+    line-height: 92px;
     letter-spacing: -0.02em;
   }
 
   .t-h2 {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 52px;
-    line-height: 62.4px;
+    font-size: 46px;
+    line-height: 57px;
     letter-spacing: -0.01em;
   }
 
   .t-h3 {
     font-family: var(--font-display);
     font-weight: 500;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 24px;
   }
 
   .t-body {
-    font-size: 16px;
-    line-height: 22.4px;
+    font-size: 15px;
+    line-height: 23px;
   }
 
   .t-label {
-    font-size: 14px;
-    line-height: 19.6px;
+    font-size: 13px;
+    line-height: 20px;
   }
 
   .t-meta {
-    font-size: 12px;
-    line-height: 15.6px;
+    font-size: 11.5px;
+    line-height: 16px;
   }
 
   .t-button {
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 16.8px;
   }
 }

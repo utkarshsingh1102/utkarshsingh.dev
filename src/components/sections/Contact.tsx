@@ -6,7 +6,7 @@ import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { PreTitle } from "@/components/ui/PreTitle";
 
 const fieldClass =
-  "h-[60px] w-full border border-line bg-transparent px-[20px] t-body text-white outline-none transition-colors duration-200 focus:border-ink-muted";
+  "h-[60px] w-full border border-line bg-transparent px-[20px] t-body text-ink outline-none transition-colors duration-200 focus:border-ink-muted";
 
 function Label({
   htmlFor,
@@ -45,7 +45,7 @@ export function Contact() {
       <div className="grid grid-cols-1 gap-[40px] lg:grid-cols-[0.8fr_1fr]">
         <Reveal className="flex flex-col gap-[10px] self-start">
           <PreTitle>Get in Touch</PreTitle>
-          <h2 className="t-h2 text-[clamp(34px,5vw,52px)] leading-[1.2] text-white">
+          <h2 className="t-h2 text-[clamp(30px,4.2vw,46px)] leading-[1.2] text-ink">
             Let’s Work <br />
             <span className="text-ink-muted">Together</span>
           </h2>
@@ -116,7 +116,7 @@ export function Contact() {
                 id="message"
                 name="message"
                 placeholder="Write your message here"
-                className="min-h-[140px] w-full resize-y border border-line bg-transparent p-[20px] text-[16px] leading-[19.2px] text-white outline-none transition-colors duration-200 focus:border-ink-muted"
+                className="min-h-[140px] w-full resize-y border border-line bg-transparent p-[20px] text-[16px] leading-[19.2px] text-ink outline-none transition-colors duration-200 focus:border-ink-muted"
               />
             </StaggerItem>
           </Stagger>
@@ -124,7 +124,7 @@ export function Contact() {
           <Reveal className="flex items-center gap-[20px]">
             <button
               type="submit"
-              className="border border-white bg-white px-[20px] py-[10px] t-button text-panel transition-colors duration-200 hover:bg-transparent hover:text-white"
+              className="border border-ink bg-ink px-[20px] py-[10px] t-button text-ink-inverse transition-colors duration-200 hover:bg-transparent hover:text-ink"
             >
               Send message
             </button>

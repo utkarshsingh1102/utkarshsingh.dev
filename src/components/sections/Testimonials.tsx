@@ -9,7 +9,7 @@ export function Testimonials() {
       <div className="flex w-full max-w-[500px] flex-col items-center gap-[40px] pt-[40px] xl:max-w-[640px] 3xl:max-w-[820px]">
         <Reveal className="flex flex-col items-center gap-[10px]">
           <PreTitle>What clients say</PreTitle>
-          <h2 className="t-h2 text-center text-[clamp(34px,5vw,52px)] leading-[1.2] text-white">
+          <h2 className="t-h2 text-center text-[clamp(30px,4.2vw,46px)] leading-[1.2] text-ink">
             Feedback That
             <br />
             <span className="text-ink-muted">Fuels Me</span>
@@ -53,7 +53,7 @@ export function Testimonials() {
                     {item.quote}
                   </blockquote>
                   <figcaption className="flex flex-wrap items-center gap-x-[8px] t-body">
-                    <span className="text-white">{item.name},</span>
+                    <span className="text-ink">{item.name},</span>
                     <span className="text-ink-faint">{item.title}</span>
                   </figcaption>
                 </div>

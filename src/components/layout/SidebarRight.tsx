@@ -14,7 +14,7 @@ const sectionIds = indexNav.map((item) => item.href.slice(1));
  * From xl up the sections scroll inside `#main-scroll` rather than the
  * document, so the observer roots itself on whichever is actually scrolling.
  */
-export function SidebarRight() {
+export function SidebarRight({ visible = true }: { visible?: boolean }) {
   const [activeId, setActiveId] = useState<string>(sectionIds[0]);
 
   useEffect(() => {
@@ -61,13 +61,24 @@ export function SidebarRight() {
   }, []);
 
   return (
+    // Pages with no index collapse the rail rather than unmounting it, so the
+    // centre column grows into the space instead of snapping.
     <motion.aside
-      className="hidden w-rail-right shrink-0 bg-panel xl:block"
+      aria-hidden={!visible}
+      className={`hidden shrink-0 overflow-hidden bg-panel transition-[width,opacity] duration-500 ease-out xl:block ${
+        visible ? "w-rail-right opacity-100" : "w-0 opacity-0"
+      }`}
       initial={{ opacity: 0, x: 28 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.7, ease: EASE, delay: 0.1 }}
     >
-      <div className="flex h-full flex-col gap-[10px] overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      {/* Fixed width inside the collapsing shell, so the panel is clipped away
+          rather than squashed as the rail closes. */}
+      <div
+        className={`flex h-full w-rail-right flex-col gap-[10px] overflow-y-auto transition-transform duration-500 ease-out [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${
+          visible ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
         <div className="shrink-0 px-[30px] pt-[30px]">
           <p className="border-b border-line pb-[10px] t-body text-ink-muted">
             Index
@@ -96,13 +107,13 @@ export function SidebarRight() {
                   shown: { opacity: 1, x: 0, transition: { duration: 0.5, ease: EASE } },
                 }}
                 aria-current={isActive ? "true" : undefined}
-                className={`relative flex min-h-[36px] items-center py-[8px] t-label transition-colors duration-200 hover:text-white ${
-                  isActive ? "text-white" : "text-ink-muted"
+                className={`relative flex min-h-[36px] items-center py-[8px] t-label transition-colors duration-200 hover:text-ink ${
+                  isActive ? "text-ink" : "text-ink-muted"
                 }`}
               >
                 <span
                   aria-hidden
-                  className={`absolute left-[-30px] h-[24px] w-[2px] bg-white transition-opacity duration-300 ${
+                  className={`absolute left-[-30px] h-[24px] w-[2px] bg-ink transition-opacity duration-300 ${
                     isActive ? "opacity-100" : "opacity-0"
                   }`}
                 />

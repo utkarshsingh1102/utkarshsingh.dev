@@ -1,9 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { EASE } from "@/components/motion/Reveal";
-import { footer, socials } from "@/data/site";
+import { footer } from "@/data/site";
 
 export function BottomBar() {
   return (
@@ -21,29 +20,9 @@ export function BottomBar() {
         className="hidden w-rail-left shrink-0 border-r border-line xl:block"
       />
 
-      <div className="flex min-w-0 flex-1 flex-wrap items-center justify-between gap-[10px] border-t border-line px-[20px] py-[4px]">
+      {/* The profile links live in the left rail now, so the bar is just the note */}
+      <div className="flex min-w-0 flex-1 flex-wrap items-center gap-[10px] border-t border-line px-[20px] py-[10px]">
         <p className="t-meta text-ink-muted">{footer.note}</p>
-        <ul className="flex items-center gap-[6px]">
-          {socials.map((social) => (
-            <li key={social.name}>
-              <a
-                href={social.href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={social.name}
-                className="flex size-[26px] items-center justify-center opacity-80 transition-opacity duration-200 hover:opacity-100"
-              >
-                <Image
-                  src={social.icon}
-                  alt=""
-                  width={18}
-                  height={18}
-                  className="size-[18px] object-contain"
-                />
-              </a>
-            </li>
-          ))}
-        </ul>
       </div>
     </motion.div>
   );

@@ -8,7 +8,7 @@ type Tech = { name: string; level: string; logo: string };
 function TechCard({ tech }: { tech: Tech }) {
   return (
     <div className="group relative flex h-[160px] w-[248.17px] shrink-0 flex-col justify-between border-r border-t border-line p-[20px]">
-      <p className="t-label text-ink-muted transition-colors duration-200 group-hover:text-white">
+      <p className="t-label text-ink-muted transition-colors duration-200 group-hover:text-ink">
         {tech.name}
       </p>
 

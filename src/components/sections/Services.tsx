@@ -23,7 +23,7 @@ export function Services() {
               className="flex flex-col gap-[20px]"
             >
               <StaggerItem>
-                <h3 className="t-h3 text-white">{service.title}</h3>
+                <h3 className="t-h3 text-ink">{service.title}</h3>
               </StaggerItem>
 
               <ul className="grid grid-cols-1 gap-x-[40px] gap-y-[14px] sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-[60px] 3xl:grid-cols-4 3xl:gap-x-[90px]">
