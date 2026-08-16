@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+@theme {
+  /* Surfaces */
+  --color-page: #1f1f1f;
+  --color-panel: #181818;
+  --color-line: #2b2b2b;
+
+  /* Text */
+  --color-ink: #ffffff;
+  --color-ink-bright: #eeeeee;
+  --color-ink-muted: #b1b1b1;
+  --color-ink-soft: #9d9d9d;
+  --color-ink-faint: #8f8f8f;
+
+  /* Oversized watermark type/rules in the section dividers */
+  --color-ghost: rgba(255, 255, 255, 0.055);
+
+  /* Accents */
+  --color-accent: #f7f4be;
+  --color-accent-soft: rgba(247, 244, 190, 0.2);
+  --color-status: #5aee6c;
+  --color-status-soft: rgba(90, 238, 108, 0.1);
+
+  /* Type */
+  --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
+  --font-display: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+
+  /* Ultrawide steps. Registered as real breakpoints (rather than arbitrary
+     `min-[…]` variants) so they sort after lg/xl/2xl in the cascade. */
+  /* rem units so they sort after Tailwind's own rem-based breakpoints */
+  --breakpoint-3xl: 118.75rem; /* 1900px */
+  --breakpoint-4xl: 162.5rem; /* 2600px */
+
+  /* Layout rails from the 1512w artboard. The shell is full-bleed, so the
+     rails hug the screen edges and grow a little on wide displays before
+     hitting their caps; the artboard widths are the lower bound. */
+  --spacing-rail-left: clamp(300px, 20vw, 400px);
+  --spacing-rail-right: clamp(200px, 13vw, 280px);
+  /* Reading width of the centre column; leftover space stays page colour. */
+  --container-content: 1100px;
+  --spacing-topbar: 28.6px;
+}
+
+@layer base {
+  /* Lenis drives the easing — native smooth scrolling would fight it. */
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    background-color: var(--color-page);
+    color: var(--color-ink-muted);
+    font-family: var(--font-mono);
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-accent-soft);
+    color: var(--color-accent);
+  }
+
+  input,
+  textarea {
+    font-family: inherit;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-ink-faint);
+  }
+}
+
+@layer components {
+  /* Type ramp lifted straight off the Figma text styles */
+  .t-display {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 92px;
+    line-height: 101.2px;
+    letter-spacing: -0.02em;
+  }
+
+  .t-h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 52px;
+    line-height: 62.4px;
+    letter-spacing: -0.01em;
+  }
+
+  .t-h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .t-body {
+    font-size: 16px;
+    line-height: 22.4px;
+  }
+
+  .t-label {
+    font-size: 14px;
+    line-height: 19.6px;
+  }
+
+  .t-meta {
+    font-size: 12px;
+    line-height: 15.6px;
+  }
+
+  .t-button {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16.8px;
+  }
+}
+
+@keyframes marquee-left {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes status-ping {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.45;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+.animate-marquee-left {
+  animation: marquee-left 42s linear infinite;
+}
+
+.animate-marquee-right {
+  animation: marquee-right 42s linear infinite;
+}
+
+.animate-status-ping {
+  animation: status-ping 2.4s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-left,
+  .animate-marquee-right,
+  .animate-status-ping {
+    animation: none;
+  }
+}
